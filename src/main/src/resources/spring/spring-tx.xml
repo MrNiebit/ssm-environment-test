@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!-- 配置事务管理器 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 注册事务通知  -编写顾问-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <!-- 指定连接点 -可以被增强的目标方法 -->
+        <tx:attributes>
+            <!--这里可以直接填方法名, 可以填* 表示任意方法-->
+            <tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--    编写aop, 让spring自动对目标对象生成代理, 需要使用aspect表达式-->
+    <aop:config>
+        <!--        定义切入点, -->
+        <!--        这里就是 设置事务管理的范围-->
+        <aop:pointcut id="txPonintCut" expression="execution(* cn.lacknb.service.*.*(..))"/>
+        <!--        切面: 将切入点与通知关联-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPonintCut"/>
+    </aop:config>
+</beans>
