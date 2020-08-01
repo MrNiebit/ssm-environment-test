@@ -23,7 +23,7 @@
                     </list>
                 </property>
             </bean>
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" /><!--json转换器-->
+<!--            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />&lt;!&ndash;json转换器&ndash;&gt;-->
 
         </mvc:message-converters>
     </mvc:annotation-driven>

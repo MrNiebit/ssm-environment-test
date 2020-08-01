@@ -14,9 +14,14 @@
   然后将这个对象放置在ServletContext的属性里，这样我们只要得到Servlet就可以得到WebApplicationContext对象，
   并利用这个对象访问spring容器管理的bean。
   -->
-<!--  <listener>-->
-<!--    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-<!--  </listener>-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/spring-*.xml</param-value>
+  </context-param>
 
   <servlet>
     <servlet-name>dispatchServlet</servlet-name>
@@ -24,7 +29,7 @@
 
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring/spring-*.xml</param-value>
+      <param-value>classpath:spring/springmvc.xml</param-value>
     </init-param>
 
     <load-on-startup>1</load-on-startup>
@@ -35,6 +40,8 @@
     <!-- 如果 用 /* 会导致 静态资源、jsp 无法访问。-->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+<!--  <absolute-ordering/>-->
 
   <filter>
     <filter-name>CharacterEncoding</filter-name>
