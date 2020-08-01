@@ -18,7 +18,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 
-    <spring.version>5.1.5.RELEASE</spring.version>
+    <spring.version>5.2.8.RELEASE</spring.version>
     <mybatis.version>3.4.5</mybatis.version>
     <mysql.version>8.0.19</mysql.version>
   </properties>
@@ -162,29 +162,25 @@
     </dependency>
 
 
-<!--    <dependency>-->
-<!--      <groupId>com.alibaba</groupId>-->
-<!--      <artifactId>fastjson</artifactId>-->
-<!--      <version>1.2.70</version>-->
-<!--    </dependency>-->
     <!--接收ajax发来的对象-->
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.8</version>
+      <version>2.10.3</version>
     </dependency>
+
 
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.9.8</version>
+      <version>2.10.3</version>
     </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.9.8</version>
+      <version>2.10.3</version>
     </dependency>
 
 
